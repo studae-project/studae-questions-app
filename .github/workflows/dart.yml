@@ -41,7 +41,7 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter build web --release
+      - run: flutter build web --release --web-renderer canvaskit
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
