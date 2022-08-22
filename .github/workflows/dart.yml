@@ -23,12 +23,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
-          channel: "dev"
-      - run: flutter config --enable-web
+          channel: "stable"
       - run: flutter pub get
-      - run: flutter build web --release
+      - run: flutter build web
       - run: |
           rm -r /docs
           mkdir docs
