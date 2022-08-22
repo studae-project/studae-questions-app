@@ -5,7 +5,11 @@ class CreateQuestionRequest {
   Future<bool> create(Question question) async {
     var host =
         const String.fromEnvironment("HOST", defaultValue: "localhost:8090");
-    var url = Uri.http(host, "question");
+    var url = Uri.https(host, "question");
+
+    if (host.startsWith("local")) {
+      url = Uri.http(host, "question");
+    }
 
     var request = http.MultipartRequest("POST", url);
     request.fields["text"] = question.question;

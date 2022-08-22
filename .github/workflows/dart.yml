@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  HOST: https://studae-questions-api.herokuapp.com
+  HOST: studae-questions-api.herokuapp.com
   
 permissions:
   contents: read
