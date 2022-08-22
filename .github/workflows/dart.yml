@@ -12,6 +12,9 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+env:
+  HOST: https://studae-questions-api.herokuapp.com
   
 permissions:
   contents: read
@@ -33,6 +36,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,7 +45,7 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: flutter build web --release --web-renderer canvaskit --base-href "/studae-questions-app/"
+      - run: flutter build web --release --web-renderer canvaskit --base-href "/studae-questions-app/" --dart-define=HOST=${{ env.HOST }}
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
